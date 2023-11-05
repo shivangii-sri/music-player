@@ -13,6 +13,9 @@ const artist = document.getElementById('artist');
 const progressContainer = document.getElementById('progress-container');
 const progress = document.getElementById('progress');
 
+const currentTimeEl = document.getElementById('current-time');
+const durationEl = document.getElementById('duration');
+
 // Music list
 const songs = [
     {
@@ -100,10 +103,37 @@ loadSong(songs[songIndex]);
 function updateProgressBar(e) {
     if(isPlaying){
         const {duration , currentTime } = e.srcElement;
-        console.log(duration , currentTime);
+        //console.log(duration , currentTime);
+        
         // Update progress bar width
         const progressPercent = (currentTime / duration) * 100;
         progress.style.width = `${progressPercent}%` ;
+
+        // Calculate display for duration time
+        const durationMinutes = Math.floor(duration/60);
+        //console.log('minutes' ,  durationMinutes);
+        let durationSeconds = Math.floor(duration % 60); //extra seconds which are left, eg. for duration 123 sec, it is 2:05 i.e 2 min 05 seconds
+        if(durationSeconds < 10){
+            durationSeconds = `0${durationSeconds}`;
+        }
+        console.log('seconds' , durationSeconds);
+
+        durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
+
+        // Delay switching duration element to avoid NaN
+        if(durationSeconds) {
+            duration.textContent = `${durationMinutes}:${durationSeconds}`;
+        }
+
+         // Calculate display for duration time
+         const currentMinutes = Math.floor(currentTime/60);
+         console.log('minutes' ,  currentMinutes);
+         let currentSeconds = Math.floor(currentTime % 60); //extra seconds which are left, eg. for current 123 sec, it is 2:05 i.e 2 min 05 seconds
+         if(currentSeconds < 10){
+             currentSeconds = `0${currentSeconds}`;
+         }
+         console.log('seconds' , currentSeconds);
+         currentTimeEl.textContent = `${currentMinutes}:${currentSeconds}` ;
     }
 }
 
