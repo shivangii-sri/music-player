@@ -68,7 +68,7 @@ h3 {
 }
 
 .progress {
-  background: #242323;
+  background: #090909;
   border-radius: 5px;
   height: 100%;
   /* change this to show progress */
@@ -95,7 +95,12 @@ h3 {
   font-size: 30px;
   color: rgb(129, 129, 129);
   margin-right: 30px;
+  cursor: pointer;
+  user-select: none;
+}
 
+.fas:hover{
+  filter: brightness(80%);
 }
 
 
@@ -111,7 +116,7 @@ h3 {
 
   .player-container{
     width:95vw;
-    
+
   }
 
   .img-container {
