@@ -111,28 +111,21 @@ function updateProgressBar(e) {
 
         // Calculate display for duration time
         const durationMinutes = Math.floor(duration/60);
-        //console.log('minutes' ,  durationMinutes);
         let durationSeconds = Math.floor(duration % 60); //extra seconds which are left, eg. for duration 123 sec, it is 2:05 i.e 2 min 05 seconds
         if(durationSeconds < 10){
             durationSeconds = `0${durationSeconds}`;
-        }
-        console.log('seconds' , durationSeconds);
-
-        durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
-
+        }       
         // Delay switching duration element to avoid NaN
         if(durationSeconds) {
-            duration.textContent = `${durationMinutes}:${durationSeconds}`;
+            durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
         }
 
-         // Calculate display for duration time
+         // Calculate display for current time
          const currentMinutes = Math.floor(currentTime/60);
-         console.log('minutes' ,  currentMinutes);
          let currentSeconds = Math.floor(currentTime % 60); //extra seconds which are left, eg. for current 123 sec, it is 2:05 i.e 2 min 05 seconds
          if(currentSeconds < 10){
              currentSeconds = `0${currentSeconds}`;
          }
-         console.log('seconds' , currentSeconds);
          currentTimeEl.textContent = `${currentMinutes}:${currentSeconds}` ;
     }
 }
